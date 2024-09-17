@@ -110,3 +110,32 @@ when@test:
  * Run "make:admin:crud" to generate CRUD controllers and link them from the Dashboard.
 
 ```
+
+## Création du form login
+
+    php bin/console make:security:form-login 
+
+```bash
+ php bin/console make:security:form-login
+
+ Choose a name for the controller class (e.g. SecurityController) [SecurityController]:
+ >
+
+ Do you want to generate a '/logout' URL? (yes/no) [yes]:
+ >
+
+ Do you want to generate PHPUnit tests? [Experimental] (yes/no) [no]:
+ > yes
+
+ created: src/Controller/SecurityController.php
+ created: templates/security/login.html.twig
+ created: tests/LoginControllerTest.php
+ updated: config/packages/security.yaml
+
+
+  Success!
+
+
+ Next: Review and adapt the login template: security/login.html.twig to suit your needs.
+```
+
