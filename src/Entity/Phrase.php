@@ -12,13 +12,19 @@ class Phrase
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(
+        type: 'integer',
+        options: ['unsigned' => true]
+    )]
     private ?int $id = null;
 
     #[ORM\Column(length: 350)]
     private ?string $title = null;
 
-    #[ORM\Column]
+    #[ORM\Column(
+        type: 'boolean',
+        options: ['default' => false]
+    )]
     private ?bool $published = null;
 
     /**

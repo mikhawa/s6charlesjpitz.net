@@ -12,7 +12,10 @@ class Section
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(
+        type: 'integer',
+        options: ['unsigned' => true]
+    )]
     private ?int $id = null;
 
     /**
@@ -20,6 +23,9 @@ class Section
      */
     #[ORM\ManyToMany(targetEntity: Phrase::class, mappedBy: 'sections')]
     private Collection $phrases;
+
+    #[ORM\Column(length: 60)]
+    private ?string $title = null;
 
     public function __construct()
     {
@@ -54,6 +60,18 @@ class Section
         if ($this->phrases->removeElement($phrase)) {
             $phrase->removeSection($this);
         }
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(string $title): static
+    {
+        $this->title = $title;
 
         return $this;
     }
