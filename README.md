@@ -139,3 +139,9 @@ when@test:
  Next: Review and adapt the login template: security/login.html.twig to suit your needs.
 ```
 
+### Installation de Slugify
+
+        composer require cocur/slugify
+
+
+
