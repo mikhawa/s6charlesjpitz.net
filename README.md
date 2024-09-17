@@ -23,4 +23,9 @@ Création d'un utilisateur
 Création de la base de données
 
         php bin/console doctrine:database:create
-        php bin/console doctrine:schema:update --force
+
+Création des tables
+        
+    php bin/console make:migration
+
+    php bin/console doctrine:migrations:migrate
