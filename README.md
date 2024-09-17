@@ -83,3 +83,9 @@ when@test:
 
 # Création de la page d'accueil
 
+    php bin/console make:controller HomeController
+
+### suppression de asset mapper
+
+    composer remove symfony/ux-turbo symfony/asset-mapper symfony/stimulus-bundle
+
