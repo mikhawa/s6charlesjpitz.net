@@ -6,3 +6,6 @@ Installation de amphp
 
     composer require amphp/amp
 
+Installation de EasyAdmin
+
+    composer require easycorp/easyadmin-bundle
