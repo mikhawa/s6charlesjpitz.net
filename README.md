@@ -143,5 +143,58 @@ when@test:
 
         composer require cocur/slugify
 
+Documentation : https://github.com/cocur/slugify
+
+```php
+// config/bundles.php
+return [
+    // ...
+    Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle::class => ['all' => true],
+];
+
+```
+
+```bash
+php bin/console make:entity Section
+ Your entity already exists! So let's add some new fields!
+
+ New property name (press <return> to stop adding fields):
+ > slug_title
+
+ Field type (enter ? to see all types) [string]:
+ >
 
 
+ Field length [255]:
+ > 65
+
+ Can this field be null in the database (nullable) (yes/no) [no]:
+ >
+
+ updated: src/Entity/Section.php
+ 
+ Et src/Entity/Section.php
+ ```
+
+```php
+# ...
+ 
+ #[ORM\Column(
+        length: 65,
+        unique: true
+    )]
+    private ?string $slug_title = null;
+```
+
+Une petite migration...
+
+    php bin/console make:migration
+
+    php bin/console doctrine:migrations:migrate
+
+N'oublions de mettre les formulaires en bootstrap:
+
+```yaml
+# config/packages/twig.yaml
+twig:
+    form_themes: ['bootstrap_5_horizontal_layout.html.twig']

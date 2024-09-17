@@ -27,6 +27,12 @@ class Section
     #[ORM\Column(length: 60)]
     private ?string $title = null;
 
+    #[ORM\Column(
+        length: 65,
+        unique: true
+    )]
+    private ?string $slug_title = null;
+
     public function __construct()
     {
         $this->phrases = new ArrayCollection();
@@ -72,6 +78,18 @@ class Section
     public function setTitle(string $title): static
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSlugTitle(): ?string
+    {
+        return $this->slug_title;
+    }
+
+    public function setSlugTitle(string $slug_title): static
+    {
+        $this->slug_title = $slug_title;
 
         return $this;
     }
