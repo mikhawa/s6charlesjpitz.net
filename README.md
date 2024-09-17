@@ -89,3 +89,24 @@ when@test:
 
     composer remove symfony/ux-turbo symfony/asset-mapper symfony/stimulus-bundle
 
+# Création d'une administration
+
+    php bin/console make:admin:dashboard
+
+```bash
+ Which class name do you prefer for your Dashboard controller? [DashboardController]:
+ > AdminController
+
+ In which directory of your project do you want to generate "AdminController"? [src/Controller/Admin/]:
+ >
+
+
+
+ [OK] Your dashboard class has been successfully generated.
+
+
+ Next steps:
+ * Configure your Dashboard at "src/Controller/Admin/AdminController.php"
+ * Run "make:admin:crud" to generate CRUD controllers and link them from the Dashboard.
+
+```
