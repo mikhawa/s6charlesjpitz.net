@@ -19,23 +19,17 @@
                     </div>
                     <!-- Divider-->
                     <div class="col-md-10 col-lg-8 col-xl-9">
-                        <!-- Post preview-->
+                        {% for phrase in phrases %}
                         <div class="post-preview">
-                                <h4 class="post-subtitle">Problems look mighty small from 150 miles up</h4>
+                                <h4 class="post-subtitle">{{ phrase.title }}</h4>
                             </a>
                             <p class="post-meta">
                                 Écrit par Charles J. Pitz - SABAM 764 379 100
                             </p>
                         </div>
                         <hr>
-                        <!-- Post preview-->
-                        <div class="post-preview">
-                            <h4 class="post-subtitle">Problems look mighty small from 150 miles up</h4>
-                            </a>
-                            <p class="post-meta">
-                                Écrit par Charles J. Pitz - SABAM 764 379 100
-                            </p>
-                        </div>
+                        {% endfor %}
+
 
 
 
