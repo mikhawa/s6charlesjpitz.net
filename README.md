@@ -198,3 +198,23 @@ N'oublions de mettre les formulaires en bootstrap:
 # config/packages/twig.yaml
 twig:
     form_themes: ['bootstrap_5_horizontal_layout.html.twig']
+```
+
+## installation des assets
+
+Il faut mettre manuellement les fichiers dans le dossier `public/` et les appeler en utilisant la fonction `asset()`
+
+dans les fichiers twigs:
+
+```twig
+{# templates/template.html.twig #}
+<link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+<script src="{{ asset('js/scripts.js') }}"></script>
+
+pour les autres ficheirs css et js, utilisons la commande suivante:
+
+```bash
+php bin/console assets:install
+```
+
+
