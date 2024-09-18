@@ -219,3 +219,23 @@ php bin/console assets:install
 ```
 
 
+### Pour récupérer les articles
+
+
+```php
+
+#[Route('/section/{slug}', name: 'section', methods: ['GET'])]
+    public function section(SectionRepository $sectionRepository, string $slug,EntityManagerInterface $em): Response
+    {
+        $section = $sectionRepository->findOneBy(['slug_title' => $slug]);
+        if (!$section) {
+            throw $this->createNotFoundException('The section does not exist');
+        }
+        $phrases = $section->getPhrases()->getValues();
+        return $this->render('main/section.html.twig', [
+            'menus' => $sectionRepository->findAll(),
+            'section' => $section,
+           'phrases' => $phrases,
+        ]);
+    }
+```
