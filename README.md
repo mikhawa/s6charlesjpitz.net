@@ -210,8 +210,9 @@ dans les fichiers twigs:
 {# templates/template.html.twig #}
 <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 <script src="{{ asset('js/scripts.js') }}"></script>
+```
 
-pour les autres ficheirs css et js, utilisons la commande suivante:
+pour les autres fichiers css et js, utilisons la commande suivante:
 
 ```bash
 php bin/console assets:install
