@@ -26,11 +26,11 @@ class MainController extends AbstractController
         if (!$section) {
             throw $this->createNotFoundException('The section does not exist');
         }
-        //$phrases = $em->getRepository(Phrase::class)->findBy(['sections' => $section->getId()]);
+       // $phrases = $em->getRepository(Phrase::class)->findBy(['sections' => $section->getId()
         return $this->render('main/section.html.twig', [
             'menus' => $sectionRepository->findAll(),
             'section' => $section,
-            //'phrases' => $phrases,
+          //  'phrases' => $phrases,
         ]);
     }
 }
