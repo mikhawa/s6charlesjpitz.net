@@ -13,17 +13,16 @@
 
                             <h2 class="post-title">Thèmes pour débat ou dissertation sur l'univers, la pensée, la mort,...</h2>
                         <hr>
-                        <h3 class="post-subtitle">Que penserez-vous de mes phrases ?</h3>
-                        <hr>
-                        <h3 class="post-subtitle">Vous toucheront-elles? Vous feront-elles réagir ?</h3>
-                        <hr>
-                        <h3 class="post-subtitle">Vous trouvez cette affirmation stupide ou elle vous semble pleine de raison ?</h3>
+                        {% for menu in menus %}
+                            <h3 class="post-subtitle"><a href ="{{ path('section',{'slug': menu.getSlugTitle()}) }}">{{ menu.title }}</a></h3>
+                            <p class="post-meta">
+                                Charles J. Pitz
+                            </p>
+                        {% endfor %}
 
 
 
-                        <p class="post-meta">
-                            Posté par Charles J. Pitz
-                        </p>
+
                     </div>
                     <!-- Divider-->
 
