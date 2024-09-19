@@ -11,13 +11,13 @@
                     <!-- Post preview-->
                     <div class="post-preview">
 
-                            <h2 class="post-title  text-primary">Thèmes pour débat ou dissertation sur l'univers, la pensée, la mort,...</h2>
+                            <h2 class="post-title  text-primary">Thèmes pour débat ou dissertation sur l'univers, la pensée, la mort...</h2>
                         <hr>
                         {% for menu in menus %}
 
-                            <h3 class="post-subtitle"><a href ="{{ path('section',{'slug': menu.getSlugTitle()}) }}">{{ menu.title }}</a></h3>
+                            <h3 class="post-subtitle"><a href ="{{ path('section',{'slug': menu.getSlugTitle()}) }}">Section | {{ menu.title }}</a></h3>
                             <p class="post-meta">
-                                Charles J. Pitz
+                                par Charles Pitz - SABAM 764 379 100
                             </p>
                         {% endfor %}
 
