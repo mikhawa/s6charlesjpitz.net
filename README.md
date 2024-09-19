@@ -273,3 +273,89 @@ Qui doit fonctionner avec le menu :
 Dans `# config/packages/security.yaml`
 
 ```yaml
+security:
+  # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
+  password_hashers:
+    Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
+  # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+  providers:
+    # used to reload user from session & other features (e.g. switch_user)
+    app_user_provider:
+      entity:
+        class: App\Entity\User
+        property: username
+  firewalls:
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      lazy: true
+      provider: app_user_provider
+      form_login:
+        login_path: app_login
+        check_path: app_login
+        enable_csrf: true
+
+
+      logout:
+        path: app_logout
+        # where to redirect after logout
+        target: main
+      remember_me:
+        secret: '%kernel.secret%' # required
+        lifetime: 604800 # 1 week in seconds
+        token_provider:
+          doctrine: true
+      login_throttling:
+        max_attempts: 3          # per minute ...
+        interval: '15 minutes' # ... or in a custom period
+
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#the-firewall
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true
+
+  # Easy way to control access for large sections of your site
+  # Note: Only the *first* access control that matches will be used
+  access_control:
+    - { path: ^/admin, roles: ROLE_ADMIN }
+    - { path: ^/profile, roles: ROLE_USER }
+
+when@test:
+  security:
+    password_hashers:
+      # By default, password hashers are resource intensive and take time. This is
+      # important to generate secure password hashes. In tests however, secure hashes
+      # are not important, waste resources and increase test times. The following
+      # reduces the work factor to the lowest possible values.
+      Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface:
+        algorithm: auto
+        cost: 4 # Lowest possible value for bcrypt
+        time_cost: 3 # Lowest possible value for argon
+        memory_cost: 10 # Lowest possible value for argon
+```
+
+
+### Gestion de EasyAdmin
+
+```bash
+ php bin/console make:admin:crud
+
+ Which Doctrine entity are you going to manage with this CRUD controller?:
+  [0] App\Entity\Phrase
+  [1] App\Entity\Section
+  [2] App\Entity\User
+ > 0
+0
+
+ Which directory do you want to generate the CRUD controller in? [src/Controller/Admin/]:
+ >
+
+ Namespace of the generated CRUD controller [App\Controller\Admin]:
+ >
+
+
+ [OK] Your CRUD controller class has been successfully generated.
+```
+
