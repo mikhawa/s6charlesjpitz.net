@@ -20,13 +20,17 @@ security:
                 login_path: app_login
                 check_path: app_login
                 enable_csrf: true
+
+
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: main
             remember_me:
                 secret: '%kernel.secret%' # required
                 lifetime: 604800 # 1 week in seconds
+                token_provider:
+                    doctrine: true
 
 
             # activate different ways to authenticate

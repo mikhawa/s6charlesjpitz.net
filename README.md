@@ -192,7 +192,7 @@ Une petite migration...
 
     php bin/console doctrine:migrations:migrate
 
-N'oublions de mettre les formulaires en bootstrap:
+N'oublions de mettre les formulaires en bootstrap :
 
 ```yaml
 # config/packages/twig.yaml
@@ -212,7 +212,7 @@ dans les fichiers twigs:
 <script src="{{ asset('js/scripts.js') }}"></script>
 ```
 
-pour les autres fichiers css et js, utilisons la commande suivante:
+Pour les autres fichiers css et js, utilisons la commande suivante :
 
 ```bash
 php bin/console assets:install
@@ -238,4 +238,30 @@ php bin/console assets:install
            'phrases' => $phrases,
         ]);
     }
+```
+
+### Pour la mise en page de la connexion
+
+Qui doit fonctionner avec le menu :
+
+`src/Controller/SecurityController.php`
+
+```php
+#...
+#[Route(path: '/login', name: 'app_login')]
+    public function login(AuthenticationUtils $authenticationUtils, SectionRepository $sectionRepository): Response
+    {
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('security/login.html.twig', [
+            'last_username' => $lastUsername,
+            'error' => $error,
+            'menus' => $sectionRepository->findAll(),
+        ]);
+    }
+# ...
 ```
