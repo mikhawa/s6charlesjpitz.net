@@ -265,3 +265,11 @@ Qui doit fonctionner avec le menu :
     }
 # ...
 ```
+
+### Installation du rate-limiter
+
+    composer require symfony/rate-limiter
+
+Dans `# config/packages/security.yaml`
+
+```yaml
