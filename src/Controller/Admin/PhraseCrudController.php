@@ -25,6 +25,10 @@ class PhraseCrudController extends AbstractCrudController
             TextField::new('title'),
             BooleanField::new('published'),
             AssociationField::new('sections', 'Section')->hideOnIndex(),
+            ->setTemplatePath('admin/fields/statistique.html.twig'),
+            NumberField::new('statistique', 'Statistique')
+            ->setTextAlign('center')
+            ->setTemplatePath('admin/fields/statistique.html.twig'),
         ];
     }
 

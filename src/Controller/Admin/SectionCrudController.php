@@ -23,6 +23,9 @@ class SectionCrudController extends AbstractCrudController
            // IdField::new('id'),
             TextField::new('title'),
             SlugField::new('slug_title')->setTargetFieldName('title'),
+            NumberField::new('statistique', 'Statistique')
+                ->setTextAlign('center')
+            ->setTemplatePath('admin/fields/statistique.html.twig'),
         ];
     }
 
