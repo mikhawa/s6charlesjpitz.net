@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Phrase;
+use App\Entity\Section;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
@@ -43,5 +44,7 @@ class AdminController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Accueil', 'fa fa-home');
         yield MenuItem::linkToCrud('Les phrases', 'fas fa-list', Phrase::class);
+        yield MenuItem::linkToCrud('Les sections', 'fas fa-list', Section::class);
+
     }
 }

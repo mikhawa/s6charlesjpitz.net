@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Section;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
@@ -21,7 +22,7 @@ class SectionCrudController extends AbstractCrudController
         return [
            // IdField::new('id'),
             TextField::new('title'),
-            TextEditorField::new('description'),
+            SlugField::new('slug_title')->setTargetFieldName('title'),
         ];
     }
 
