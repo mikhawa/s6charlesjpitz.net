@@ -359,3 +359,4 @@ when@test:
  [OK] Your CRUD controller class has been successfully generated.
 ```
 
+php bin/console make:admin:crud
